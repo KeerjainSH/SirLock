@@ -39,11 +39,10 @@ def run_command(command):
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(17, GPIO.OUT)
 
-    while (True):
-        GPIO.output(17, 1)
-        time.sleep(10)
-        GPIO.output(17, 0)
-        GPIO.cleanup()
+    GPIO.output(17, 1)
+    time.sleep(10)
+    GPIO.output(17, 0)
+    GPIO.cleanup()
 
 # Create a callback on_snapshot function to capture changes
 def on_snapshot(doc_snapshot, changes, read_time):
