@@ -16,10 +16,15 @@ class _DashboardState extends State<Dashboard> {
 }
 
 Widget _layout(BuildContext context) {
-  return Column(
+  return Stack(
     children: [
-      _header(context),
-      _gridMenu(),
+      _background(context),
+      Column(
+        children: [
+          _header(context),
+          _gridMenu(),
+        ],
+      ),
     ],
   );
 }
@@ -54,6 +59,7 @@ class _gridMenu extends StatelessWidget {
           ),
           itemBuilder: (BuildContext context, int index) {
             return Card(
+                clipBehavior: Clip.antiAlias,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(23),
                   side: BorderSide(
@@ -63,7 +69,9 @@ class _gridMenu extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    Image(image: AssetImage(menus[index].asset)),
+                    Image(
+                      image: AssetImage(menus[index].asset),
+                    ),
                     Text(
                       menus[index].name,
                       style: const TextStyle(fontWeight: FontWeight.bold),
@@ -81,7 +89,7 @@ Widget _header(BuildContext context) {
   return Container(
     height: _getScreenHeight(context, 20),
     width: double.infinity,
-    color: Colors.blue[600],
+    // color: Colors.blue[600],
     child: Column(
       children: [
         _headerText(context, 'My Dashboard\nRailock',
@@ -109,6 +117,22 @@ Padding _headerText(
         textAlign: TextAlign.left,
       ),
     ),
+  );
+}
+
+Widget _background(BuildContext context) {
+  return Column(
+    children: [
+      Container(
+          height: _getScreenHeight(context, 30),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Colors.teal.shade100, Colors.blue.shade900],
+            ),
+          )),
+    ],
   );
 }
 
