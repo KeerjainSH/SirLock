@@ -92,10 +92,8 @@ Widget _header(BuildContext context) {
     // color: Colors.blue[600],
     child: Column(
       children: [
-        _headerText(context, 'My Dashboard\nRailock',
-            _getScreenHeight(context, 2.7), _getScreenHeight(context, 5)),
-        _headerText(context, '12 item', _getScreenHeight(context, 2),
-            _getScreenHeight(context, 4.1)),
+        _headerText(context, 'My Dashboard\nSirlock',
+            _getScreenHeight(context, 2.7), _getScreenHeight(context, 5))
       ],
     ),
   );
