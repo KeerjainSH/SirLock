@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sirlock/models/Menu.dart';
+import 'package:sirlock/pages/dashboard/toast_function.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -38,21 +40,21 @@ class _gridMenu extends StatelessWidget {
     Menu(
         name: 'Sound an Alarm',
         asset: 'assets/image/sound.png',
-        onclick: () {}),
+        onclick: alarm()),
     Menu(
         name: 'Unlock the Door',
         asset: 'assets/image/unlock.png',
-        onclick: () {}),
+        onclick: unlock()),
     Menu(
         name: 'Start Streaming',
         asset: 'assets/image/streaming.png',
-        onclick: () {}),
+        onclick: alarm()),
     Menu(
         name: 'Shutdown PI',
         asset: 'assets/image/shutdown.png',
-        onclick: () {}),
+        onclick: shutdown()),
     Menu(name: 'View Photo', asset: 'assets/image/view.png', onclick: () {}),
-    Menu(name: 'Reboot PI', asset: 'assets/image/reboot.png', onclick: () {})
+    Menu(name: 'Reboot PI', asset: 'assets/image/reboot.png', onclick: reboot())
   ];
 
   @override
@@ -70,34 +72,37 @@ class _gridMenu extends StatelessWidget {
             childAspectRatio: 0.8,
           ),
           itemBuilder: (BuildContext context, int index) {
-            return Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(23),
-                  side: BorderSide(
-                    color: Colors.grey.withOpacity(0.9),
-                    width: 1,
+            return InkWell(
+              onTap: menus[index].ontap,
+              child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(23),
+                    side: BorderSide(
+                      color: Colors.grey.withOpacity(0.9),
+                      width: 1,
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: _getScreenHeight(context, 3),
-                      horizontal: _getScreenWidth(context, 3)),
-                  child: Column(
-                    children: [
-                      Image(
-                        image: AssetImage(menus[index].asset),
-                        height: _getScreenHeight(context, 15),
-                        alignment: Alignment.topCenter,
-                      ),
-                      Spacer(),
-                      Text(
-                        menus[index].name,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ));
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: _getScreenHeight(context, 3),
+                        horizontal: _getScreenWidth(context, 3)),
+                    child: Column(
+                      children: [
+                        Image(
+                          image: AssetImage(menus[index].asset),
+                          height: _getScreenHeight(context, 15),
+                          alignment: Alignment.topCenter,
+                        ),
+                        Spacer(),
+                        Text(
+                          menus[index].name,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  )),
+            );
           },
         ),
       ),
