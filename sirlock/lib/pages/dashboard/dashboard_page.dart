@@ -35,12 +35,24 @@ class _gridMenu extends StatelessWidget {
   }) : super(key: key);
 
   List<Menu> menus = [
-    Menu(name: 'Sound an Alarm', asset: 'assets/image/logo.png'),
-    Menu(name: 'Unlock the Door', asset: 'assets/image/logo.png'),
-    Menu(name: 'Start Streaming', asset: 'assets/image/logo.png'),
-    Menu(name: 'Shutdown PI', asset: 'assets/image/logo.png'),
-    Menu(name: 'View Photo', asset: 'assets/image/logo.png'),
-    Menu(name: 'Reboot PI', asset: 'assets/image/logo.png')
+    Menu(
+        name: 'Sound an Alarm',
+        asset: 'assets/image/sound.png',
+        onclick: () {}),
+    Menu(
+        name: 'Unlock the Door',
+        asset: 'assets/image/unlock.png',
+        onclick: () {}),
+    Menu(
+        name: 'Start Streaming',
+        asset: 'assets/image/streaming.png',
+        onclick: () {}),
+    Menu(
+        name: 'Shutdown PI',
+        asset: 'assets/image/shutdown.png',
+        onclick: () {}),
+    Menu(name: 'View Photo', asset: 'assets/image/view.png', onclick: () {}),
+    Menu(name: 'Reboot PI', asset: 'assets/image/reboot.png', onclick: () {})
   ];
 
   @override
@@ -67,16 +79,24 @@ class _gridMenu extends StatelessWidget {
                     width: 1,
                   ),
                 ),
-                child: Column(
-                  children: [
-                    Image(
-                      image: AssetImage(menus[index].asset),
-                    ),
-                    Text(
-                      menus[index].name,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    )
-                  ],
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: _getScreenHeight(context, 3),
+                      horizontal: _getScreenWidth(context, 3)),
+                  child: Column(
+                    children: [
+                      Image(
+                        image: AssetImage(menus[index].asset),
+                        height: _getScreenHeight(context, 15),
+                        alignment: Alignment.topCenter,
+                      ),
+                      Spacer(),
+                      Text(
+                        menus[index].name,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
                 ));
           },
         ),
