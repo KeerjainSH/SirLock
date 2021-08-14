@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1014818853578",
+    "firebase_url": "https://raspberry-pi-img-b3fb9-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "raspberry-pi-img-b3fb9",
+    "storage_bucket": "raspberry-pi-img-b3fb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014818853578:android:d4447ee617b87c31015a33",
+        "android_client_info": {
+          "package_name": "com.keerjainsh.sirlock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014818853578-tit4jtna2ar8hrs11mjhjctsr8635cfj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGNS-ezTDKS6MQk2d2uSXgPZ5suMMOUeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014818853578-tit4jtna2ar8hrs11mjhjctsr8635cfj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

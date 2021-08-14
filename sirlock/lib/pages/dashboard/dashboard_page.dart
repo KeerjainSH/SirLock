@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sirlock/models/Menu.dart';
 import 'package:sirlock/pages/dashboard/toast_function.dart';
@@ -9,6 +10,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
