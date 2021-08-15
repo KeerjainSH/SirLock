@@ -19,6 +19,8 @@ database = firestore.client()
 callback_done = threading.Event()
 
 def run_command(command):
+  database.collection(u'commands').document(u'0Ufqy1OUZ4QUadL1hmkl').update({'command': 0})
+
   if command == 0:
     return
   # Shutdown
@@ -50,7 +52,6 @@ def on_snapshot(doc_snapshot, changes, read_time):
     doc_dict = doc.to_dict()
     if 'command' in doc_dict:
       run_command(doc_dict['command'])
-      database.collection(u'commands').document(u'0Ufqy1OUZ4QUadL1hmkl').update({'command': 0})
 
   callback_done.set()
 
@@ -62,7 +63,6 @@ if doc.exists:
   doc_dict = doc.to_dict()
   if 'command' in doc_dict:
     run_command(doc_dict['command'])
-    database.collection(u'commands').document(u'0Ufqy1OUZ4QUadL1hmkl').update({'command': 0})
 
 # Listener
 doc_watch = doc_ref.on_snapshot(on_snapshot)
