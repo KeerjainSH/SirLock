@@ -6,46 +6,9 @@ import 'package:sirlock/services/database_service.dart';
 import 'package:sirlock/services/dimension_service.dart';
 
 class GridMenu extends StatelessWidget {
-  GridMenu({
+  const GridMenu({
     Key? key,
   }) : super(key: key);
-
-  final List<MenuModel> menus = [
-    MenuModel(
-        name: 'Sound an Alarm',
-        asset: 'assets/image/sound.png',
-        onclick: () {
-          createToast('Turning on the Alarm');
-          Database().updateCommand(3);
-        }),
-    MenuModel(
-        name: 'Unlock the Door',
-        asset: 'assets/image/unlock.png',
-        onclick: () {
-          createToast('Unlocking the Door');
-          Database().updateCommand(4);
-        }),
-    MenuModel(
-        name: 'Start Streaming',
-        asset: 'assets/image/streaming.png',
-        onclick: () {}),
-    MenuModel(
-        name: 'Shutdown PI',
-        asset: 'assets/image/shutdown.png',
-        onclick: () {
-          createToast('Shutting down PI');
-          Database().updateCommand(1);
-        }),
-    MenuModel(
-        name: 'View Photo', asset: 'assets/image/view.png', onclick: () {}),
-    MenuModel(
-        name: 'Reboot PI',
-        asset: 'assets/image/reboot.png',
-        onclick: () {
-          createToast('Rebooting the PI');
-          Database().updateCommand(2);
-        })
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +22,47 @@ class GridMenu extends StatelessWidget {
   }
 
   GridView _gridView(BuildContext context) {
+    final List<MenuModel> menus = [
+      MenuModel(
+          name: 'Sound an Alarm',
+          asset: 'assets/image/sound.png',
+          onclick: () {
+            createToast('Turning on the Alarm');
+            Database().updateCommand(3);
+          }),
+      MenuModel(
+          name: 'Unlock the Door',
+          asset: 'assets/image/unlock.png',
+          onclick: () {
+            createToast('Unlocking the Door');
+            Database().updateCommand(4);
+          }),
+      MenuModel(
+          name: 'Start Streaming',
+          asset: 'assets/image/streaming.png',
+          onclick: () {}),
+      MenuModel(
+          name: 'Shutdown PI',
+          asset: 'assets/image/shutdown.png',
+          onclick: () {
+            createToast('Shutting down PI');
+            Database().updateCommand(1);
+          }),
+      MenuModel(
+          name: 'View Photo',
+          asset: 'assets/image/view.png',
+          onclick: () {
+            Navigator.pushNamed(context, '/view');
+          }),
+      MenuModel(
+          name: 'Reboot PI',
+          asset: 'assets/image/reboot.png',
+          onclick: () {
+            createToast('Rebooting the PI');
+            Database().updateCommand(2);
+          })
+    ];
+
     return GridView.builder(
       itemCount: menus.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

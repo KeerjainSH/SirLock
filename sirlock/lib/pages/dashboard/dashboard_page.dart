@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:sirlock/pages/dashboard/widget/background_widget.dart';
+import 'package:sirlock/pages/shared_widget/background_widget.dart';
 import 'package:sirlock/pages/dashboard/widget/menu_widget.dart';
-import 'package:sirlock/pages/dashboard/widget/header_widget.dart';
+import 'package:sirlock/pages/shared_widget/header_widget.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -25,8 +25,8 @@ class _DashboardState extends State<Dashboard> {
         const Background(),
         Column(
           children: [
-            const Header(),
-            GridMenu(),
+            const Header(text: 'My Dashboard\nSirlock'),
+            const GridMenu(),
           ],
         ),
       ],

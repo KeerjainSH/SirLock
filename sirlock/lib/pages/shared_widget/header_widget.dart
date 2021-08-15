@@ -4,7 +4,9 @@ import 'package:sirlock/services/dimension_service.dart';
 class Header extends StatelessWidget {
   const Header({
     Key? key,
+    required this.text,
   }) : super(key: key);
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +15,8 @@ class Header extends StatelessWidget {
       width: double.infinity,
       child: Column(
         children: [
-          _headerText(context, 'My Dashboard\nSirlock',
-              getScreenHeight(context, 2.7), getScreenHeight(context, 5))
+          _headerText(context, text, getScreenHeight(context, 2.7),
+              getScreenHeight(context, 5))
         ],
       ),
     );
