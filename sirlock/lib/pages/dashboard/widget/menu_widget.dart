@@ -4,6 +4,7 @@ import 'package:sirlock/models/menu_model.dart';
 import 'package:sirlock/pages/dashboard/widget/toast.dart';
 import 'package:sirlock/services/database_service.dart';
 import 'package:sirlock/services/dimension_service.dart';
+import 'package:sirlock/services/url_launcher_service.dart';
 
 class GridMenu extends StatelessWidget {
   const GridMenu({
@@ -40,7 +41,7 @@ class GridMenu extends StatelessWidget {
       MenuModel(
           name: 'Start Streaming',
           asset: 'assets/image/streaming.png',
-          onclick: () {}),
+          onclick: launchUrl()),
       MenuModel(
           name: 'Shutdown PI',
           asset: 'assets/image/shutdown.png',
