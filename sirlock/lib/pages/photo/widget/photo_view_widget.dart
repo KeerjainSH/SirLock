@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
+import 'package:sirlock/models/firebase_file_model.dart';
 
 class PhotoView extends StatelessWidget {
   const PhotoView({
     Key? key,
-    required this.imageList,
-    required this.tag,
+    required this.images,
     required this.index,
   }) : super(key: key);
 
-  final List<String> imageList;
-  final String tag;
+  final List<FirebaseFile> images;
   final int index;
 
   @override
@@ -19,16 +18,16 @@ class PhotoView extends StatelessWidget {
     final PageController _pageController = PageController(initialPage: index);
 
     return PhotoViewGallery.builder(
-      itemCount: imageList.length,
+      itemCount: images.length,
       pageController: _pageController,
       builder: (context, index) {
         return PhotoViewGalleryPageOptions(
-          imageProvider: AssetImage(
-            imageList[index],
+          imageProvider: NetworkImage(
+            images[index].url,
           ),
           minScale: PhotoViewComputedScale.contained * 0.8,
           maxScale: PhotoViewComputedScale.covered * 2,
-          heroAttributes: PhotoViewHeroAttributes(tag: tag),
+          heroAttributes: PhotoViewHeroAttributes(tag: images[index].url),
         );
       },
       scrollPhysics: const BouncingScrollPhysics(),

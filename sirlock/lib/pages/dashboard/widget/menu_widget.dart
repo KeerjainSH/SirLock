@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sirlock/models/menu_model.dart';
 import 'package:sirlock/pages/dashboard/widget/toast.dart';
-import 'package:sirlock/services/database_service.dart';
+import 'package:sirlock/services/firestore_db_service.dart';
 import 'package:sirlock/services/dimension_service.dart';
 import 'package:sirlock/services/url_launcher_service.dart';
 
@@ -23,20 +23,21 @@ class GridMenu extends StatelessWidget {
   }
 
   GridView _gridView(BuildContext context) {
+    final firestoreDB = FirestoreDB();
     final List<MenuModel> menus = [
       MenuModel(
           name: 'Sound an Alarm',
           asset: 'assets/image/sound.png',
           onclick: () {
             createToast('Turning on the Alarm');
-            Database().updateCommand(3);
+            firestoreDB.updateCommand(3);
           }),
       MenuModel(
           name: 'Unlock the Door',
           asset: 'assets/image/unlock.png',
           onclick: () {
             createToast('Unlocking the Door');
-            Database().updateCommand(4);
+            firestoreDB.updateCommand(4);
           }),
       MenuModel(
           name: 'Start Streaming',
@@ -47,7 +48,7 @@ class GridMenu extends StatelessWidget {
           asset: 'assets/image/shutdown.png',
           onclick: () {
             createToast('Shutting down PI');
-            Database().updateCommand(1);
+            firestoreDB.updateCommand(1);
           }),
       MenuModel(
           name: 'View Photo',
@@ -60,7 +61,7 @@ class GridMenu extends StatelessWidget {
           asset: 'assets/image/reboot.png',
           onclick: () {
             createToast('Rebooting the PI');
-            Database().updateCommand(2);
+            firestoreDB.updateCommand(2);
           })
     ];
 
