@@ -25,4 +25,9 @@ class Auth extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  Future googleLogout() async {
+    await googleSignIn.disconnect();
+    FirebaseAuth.instance.signOut();
+  }
 }
