@@ -4,7 +4,7 @@ import 'package:sirlock/pages/login/login_page.dart';
 import 'package:sirlock/pages/photo/view_page.dart';
 import 'pages/dashboard/dashboard_page.dart';
 
-void main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -14,6 +14,6 @@ void main() async {
       '/dashboard': (context) => Dashboard(),
       '/view': (context) => View(),
     },
-    initialRoute: '/login',
+    initialRoute: '/dashboard',
   ));
 }
