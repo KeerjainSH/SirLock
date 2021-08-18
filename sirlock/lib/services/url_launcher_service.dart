@@ -4,10 +4,10 @@ Function launchUrl() => () {
       _launchURLBrowser();
     };
 
-_launchURLBrowser() async {
+void _launchURLBrowser() async {
   const url = 'https://google.com/';
   if (await canLaunch(url)) {
-    await launch(url, forceWebView: false);
+    await launch(url);
   } else {
     throw 'Could not launch $url';
   }

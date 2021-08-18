@@ -4,3 +4,4 @@ linter:
   rules:
     sort_pub_dependencies: false
     sized_box_for_whitespace: false
+    lowercase_with_underscores: false
