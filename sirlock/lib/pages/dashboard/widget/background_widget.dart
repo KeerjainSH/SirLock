@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sirlock/pages/shared/background_decoration.dart';
 import 'package:sirlock/services/dimension_service.dart';
 
 class Background extends StatelessWidget {
@@ -12,13 +13,7 @@ class Background extends StatelessWidget {
       children: [
         Container(
             height: getScreenHeight(context, 30),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.teal.shade100, Colors.blue.shade900],
-              ),
-            )),
+            decoration: Background_Decoration()),
       ],
     );
   }

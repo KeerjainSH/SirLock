@@ -71,7 +71,8 @@ class GridMenu extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: getScreenWidth(context, 8),
         mainAxisSpacing: getScreenHeight(context, 8),
-        childAspectRatio: 0.8,
+        childAspectRatio: MediaQuery.of(context).size.width /
+            (MediaQuery.of(context).size.height / 1.2),
       ),
       itemBuilder: (BuildContext context, int index) {
         return InkWell(

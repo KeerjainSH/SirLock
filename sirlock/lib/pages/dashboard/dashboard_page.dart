@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sirlock/pages/dashboard/widget/logoutBtn_widget.dart';
 import 'package:sirlock/pages/login/login_page.dart';
-import 'package:sirlock/pages/shared_widget/background_widget.dart';
+import 'package:sirlock/pages/dashboard/widget/background_widget.dart';
 import 'package:sirlock/pages/dashboard/widget/menu_widget.dart';
-import 'package:sirlock/pages/shared_widget/header_widget.dart';
+import 'package:sirlock/pages/shared/header_widget.dart';
 import 'package:sirlock/services/auth_service.dart';
+import 'package:sirlock/services/dimension_service.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -41,7 +42,9 @@ class Dashboard extends StatelessWidget {
         const Background(),
         Column(
           children: [
-            const Header(text: 'My Dashboard\nSirlock'),
+            Header(
+                text: 'My Dashboard\nSirlock',
+                height: getScreenHeight(context, 20)),
             const GridMenu(),
           ],
         ),

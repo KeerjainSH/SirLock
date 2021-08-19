@@ -13,6 +13,8 @@ class Gallery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double _space = getScreenWidth(context, 1);
+
     return FutureBuilder<List<FirebaseFile>>(
       future: files,
       builder: (context, snapshot) {
@@ -24,9 +26,20 @@ class Gallery extends StatelessWidget {
               return Center(child: Text('Some error occurred!'));
             } else {
               final images = _generateList(context, snapshot.data!);
-              return Wrap(
-                spacing: getScreenWidth(context, 1),
-                children: images,
+              return Padding(
+                padding: EdgeInsets.only(
+                    top: getScreenHeight(context, 15) + _space,
+                    left: _space,
+                    right: _space),
+                child: SizedBox.expand(
+                  child: SingleChildScrollView(
+                    child: Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      runSpacing: _space,
+                      children: images,
+                    ),
+                  ),
+                ),
               );
             }
         }
@@ -53,9 +66,8 @@ class Gallery extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => Scaffold(
-                    body: PhotoView(images: list, index: index),
-                  )));
+              builder: (BuildContext context) =>
+                  PhotoView(images: list, index: index)));
         },
         child: Hero(
           tag: list[index].url,

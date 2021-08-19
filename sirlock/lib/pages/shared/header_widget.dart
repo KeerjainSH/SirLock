@@ -5,25 +5,24 @@ class Header extends StatelessWidget {
   const Header({
     Key? key,
     required this.text,
+    required this.height,
   }) : super(key: key);
+
   final String text;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: getScreenHeight(context, 20),
+      height: height,
       width: double.infinity,
       child: Column(
-        children: [
-          _headerText(context, text, getScreenHeight(context, 2.7),
-              getScreenHeight(context, 5))
-        ],
+        children: [_headerText(context, text, getScreenHeight(context, 5))],
       ),
     );
   }
 
-  Padding _headerText(
-      BuildContext context, String text, double size, double top) {
+  Padding _headerText(BuildContext context, String text, double top) {
     return Padding(
       padding: EdgeInsets.fromLTRB(
           getScreenWidth(context, 5), top, getScreenWidth(context, 5), 0),
@@ -32,9 +31,9 @@ class Header extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.blue[900],
-              fontSize: size),
+            fontWeight: FontWeight.bold,
+            color: Colors.blue[900],
+          ),
           textAlign: TextAlign.left,
         ),
       ),

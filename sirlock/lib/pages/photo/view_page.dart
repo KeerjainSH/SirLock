@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sirlock/models/firebase_file_model.dart';
 import 'package:sirlock/pages/photo/widget/gallery_widget.dart';
-import 'package:sirlock/pages/shared_widget/background_widget.dart';
-import 'package:sirlock/pages/shared_widget/header_widget.dart';
+import 'package:sirlock/pages/dashboard/widget/background_widget.dart';
+import 'package:sirlock/pages/shared/background_decoration.dart';
+import 'package:sirlock/pages/shared/header_widget.dart';
 import 'package:sirlock/services/dimension_service.dart';
 import 'package:sirlock/services/storage_db_service.dart';
 
@@ -31,16 +32,11 @@ class _ViewState extends State<View> {
   Widget _layout(BuildContext context) {
     return Stack(
       children: [
-        const Background(),
-        Column(
-          children: [
-            const Header(text: 'View Image'),
-            Divider(
-              height: getScreenHeight(context, 11),
-            ),
-            Gallery(files: futureFiles),
-          ],
-        ),
+        Container(
+            height: getScreenHeight(context, 15),
+            decoration: Background_Decoration()),
+        Header(text: 'View Image', height: getScreenHeight(context, 16)),
+        Gallery(files: futureFiles),
       ],
     );
   }
