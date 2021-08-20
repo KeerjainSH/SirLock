@@ -37,13 +37,14 @@ class Dashboard extends StatelessWidget {
   }
 
   Widget _layout(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Stack(
       children: [
         const Background(),
         Column(
           children: [
             Header(
-                text: 'My Dashboard\nSirlock',
+                text: 'My Dashboard\nSirlock\nHalo, ${user.displayName} !',
                 height: getScreenHeight(context, 20)),
             const GridMenu(),
           ],

@@ -28,7 +28,7 @@ class LogoutBtn extends StatelessWidget {
             final provider = Provider.of<Auth>(context, listen: false);
             provider.googleLogout();
           },
-          backgroundColor: Color(0xffFF7971),
+          backgroundColor: Colors.red.shade700,
         ),
       ),
     );
